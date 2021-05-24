@@ -2,20 +2,20 @@
 ifeq ($(TARGET),rpi)
   # Default to the architecture used on the Pi Two/Three (ArmV7), but override this
   # with TARGET_ARCH=armv6 to build for the Pi Zero or One.
-  TARGET_ARCH := armv7l
+  TARGET_ARCH := armv9
 
-  ifeq ($(TARGET_ARCH), armv7l)
+  ifeq ($(TARGET_ARCH), armv9)
     TARGET_TOOLCHAIN_PREFIX := arm-linux-gnueabihf-
     CXXFLAGS += \
-      -march=armv7-a \
-      -mfpu=neon-vfpv4 \
+      -march=armv9-a \
+      -mfpu=neon-fp16 \
       -funsafe-math-optimizations \
       -ftree-vectorize \
       -fPIC
 
     CFLAGS += \
-      -march=armv7-a \
-      -mfpu=neon-vfpv4 \
+      -march=armv9-a \
+      -mfpu=neon-fp16 \
       -funsafe-math-optimizations \
       -ftree-vectorize \
       -fPIC
